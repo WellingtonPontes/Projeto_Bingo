@@ -18,8 +18,9 @@ public class Sistema {
 
     public void mostrarNumerosSortiados() {
         for (int numero : numeros_sorteados) {
-            System.out.println(numero);
+            System.out.print(numero + " - ");
         }
+        System.out.println();
     }
 
     public int[][] criarCartela() {
@@ -53,19 +54,24 @@ public class Sistema {
 
     }
 
-    public void validarVencedor() {
-        int[][] cartela = criarCartela();
+    public boolean validarVencedor(int [][] cartela) {
+        // int[][] cartela = criarCartela();
 
         for (int l = 0; l < 5; l++) {
             if (linhaCompleta(cartela, l)) {
-                System.out.println("parabens voce venceu por uma linha completa");
+                System.out.println("na linha " + l );
+               return true;
             }
         }
+
         for (int c = 0; c < 5; c++) {
             if (colunaCompleta(cartela, c)) {
-                System.out.println("parabens voce venceu por uma coluna completa");
+                System.out.println("na coluna " + c );
+                return true;
             }
         }
+
+        return false;
     }
 
     private boolean linhaCompleta(int[][] cartela, int linha) {
