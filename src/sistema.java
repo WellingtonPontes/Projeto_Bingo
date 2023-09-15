@@ -1,26 +1,29 @@
 import java.util.Random;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
-import java.io.*;
-import java.lang.*;
-import java.util.*;
+import java.util.ArrayList;
+
 public class Sistema {
     
     Random gerador = new Random();
 
-    int[] numeros_sortiados;
-    
-    
-    public int[] sortear(){
-        int numero = gerador.nextInt(76);
-        while(numero == 0){
-            numero = gerador.nextInt(76);
-        }
+    private List<Integer> numeros_sorteados = new ArrayList<>();
 
-        return numeros_sortiados = add(numeros_sortiados, numero);
+
+    public void sortearNumeros() {   
+        int numero;
+        do{
+            numero = gerador.nextInt(76);
+        }while(numeros_sorteados.contains(numero)); // Verifica se o número já foi sorteado
+        numeros_sorteados.add(numero);
     }
 
+    public void mostrarNumerosSortiados(){
+        for(int numero : numeros_sorteados){
+            System.out.println(numero);
+        }
+    }
+
+   
 
     private int [][] criarCartela(){
         int [][] numeros_tabela = new int [5][5];
